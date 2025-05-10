@@ -11,11 +11,17 @@ function AdView() {
         .then(res=>res.json())
         .then(data=>{
             setAdData(data)
+            const googleAnalytics = data["google_analytics"]
+            formatAds(data["facebook_ads"], "facebook_ads", googleAnalytics)
         })
     }, [])
 
-    console.log(adData)
 
+    function formatAds(adData, platform, googleAnalytics){
+        console.log('adData FB', adData)
+        console.log('platform', platform)
+        console.log('googleAnalytics', googleAnalytics)
+    }
 
     return (
         <div>
