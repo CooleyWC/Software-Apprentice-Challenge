@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import AdFilter from './AdFilter';
 
 const ADS_URL = "http://localhost:3000/fakeDataSet"
 
@@ -83,6 +84,7 @@ function AdView() {
     return (
         <div>
             <h1>AdView</h1>
+            <AdFilter />
             {cardData.map(ad=>(
                 <div 
                     key={ad.id}
