@@ -98,6 +98,7 @@ function AdView() {
                 handleDesc={handleDesc}
                 handleClear={handleClear}
             />
+            <div className='grid grid-cols-1 gap-2 mx-4'>
             {sortedSpend.map(ad=>(
                 <AdCard 
                     key={ad.id}
@@ -110,6 +111,7 @@ function AdView() {
                     results={ad.results}
                 />
             ))}
+            </div>
         </div>
     );
 }
