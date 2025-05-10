@@ -88,6 +88,13 @@ function AdView() {
         setCampSearch(e.target.value)
     }
 
+    const filteredAds = cardData.filter((ad)=>{
+        if(campSearch === ''){
+            return true
+        }
+        return ad.campaign.toLowerCase().includes(campSearch.toLowerCase())
+    })
+
 
     return (
         <div>
@@ -96,7 +103,7 @@ function AdView() {
                 campSearch={campSearch}
                 handleSearchChange={handleSearchChange}
             />
-            {cardData.map(ad=>(
+            {filteredAds.map(ad=>(
                 <div 
                     key={ad.id}
                     className='border border-solid '
