@@ -61,6 +61,11 @@ function AdView() {
                 ad[keys.adset].toLowerCase().includes(analitic.utm_medium.toLowerCase().split(' ')[0]) &&
                 ad[keys.creative].toLowerCase().includes(analitic.utm_content.toLowerCase().split(' ')[0])
             ) 
+
+            const extractResults = matchingGoogleResults.map((result)=>{
+                return result.results
+            })
+
             return {
                 id: `${platform}-${Math.floor(Math.random() * 10000)}`,
                 campaign: ad[keys.campaign],
@@ -68,18 +73,35 @@ function AdView() {
                 creative: ad[keys.creative],
                 spend: ad[keys.spend],
                 impressions: ad[keys.impressions],
-                results: matchingGoogleResults,
+                results: extractResults,
                 platform: platform
             }
         })
         return formattedAd
     }
 
-    console.log(cardData)
-
     return (
         <div>
             <h1>AdView</h1>
+            {cardData.map(ad=>(
+                <div 
+                    key={ad.id}
+                    className='border border-solid '
+                >
+                    <h1 className='text-xl'>Campaign: {ad.campaign}</h1>
+                    <h2>Ad Set: {ad.adset}</h2>
+                    <h3>Creative: {ad.creative}</h3>
+                    <p>Spend: {ad.spend}</p>
+                    <p>Impressions: {ad.impressions}</p>
+                    <div>
+                        <h5>Google Results:</h5>
+                        {ad.results.map((result, index)=>(
+                            <p key={index}>{result}</p>
+                        ))}
+                    </div>
+                   
+                </div>
+            ))}
         </div>
     );
 }
