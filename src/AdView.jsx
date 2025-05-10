@@ -34,27 +34,21 @@ const PLATFORM_KEY_MAP = {
 
 function AdView() {
 
-    // const [adData, setAdData] = useState({})
     const [cardData, setCardData] = useState([])
-
     const [campSearch, setCampSearch] = useState('')
     const [sortSpend, setSortSpend] = useState(null)
     
-
     useEffect(()=>{
         fetch(ADS_URL)
         .then(res=>res.json())
         .then(data=>{
-            // setAdData(data)
             const googleAnalytics = data["google_analytics"]
             const formattedFB = formatAds(data["facebook_ads"], "facebook_ads", googleAnalytics)
             const formattedTW = formatAds(data["twitter_ads"], "twitter_ads", googleAnalytics)
             const formattedSC = formatAds(data["snapchat_ads"], "snapchat_ads", googleAnalytics)
             setCardData(prev=>prev.concat(formattedFB, formattedTW, formattedSC))
-           
         })
     }, [])
-
 
     function formatAds(adData, platform, googleAnalytics){
         const ads = adData
@@ -118,7 +112,6 @@ function AdView() {
             return 0
         }
     })
-
 
     return (
         <div>
