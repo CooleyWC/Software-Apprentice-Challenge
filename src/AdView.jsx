@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import AdFilter from './AdFilter';
+import AdCard from './AdCard';
 
 const ADS_URL = "http://localhost:3000/fakeDataSet"
 
@@ -126,23 +127,16 @@ function AdView() {
                 handleClear={handleClear}
             />
             {sortedSpend.map(ad=>(
-                <div 
+                <AdCard 
                     key={ad.id}
-                    className='border border-solid '
-                >
-                    <h1 className='text-xl'>Campaign: {ad.campaign}</h1>
-                    <h2>Ad Set: {ad.adset}</h2>
-                    <h3>Creative: {ad.creative}</h3>
-                    <p>Spend: {ad.spend}</p>
-                    <p>Impressions: {ad.impressions}</p>
-                    <p>Clicks: {ad.clicks}</p>
-                    <div>
-                        <h5>Google Results:</h5>
-                        {ad.results.map((result, index)=>(
-                            <p key={index}>{result}</p>
-                        ))}
-                    </div>
-                </div>
+                    campaign={ad.campaign}
+                    adset={ad.adset}
+                    creative={ad.creative}
+                    spend={ad.spend}
+                    impressions={ad.impressions}
+                    clicks={ad.clicks}
+                    results={ad.results}
+                />
             ))}
         </div>
     );
