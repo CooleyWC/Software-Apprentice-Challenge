@@ -1,9 +1,15 @@
 import React from 'react';
 
-function AdFilter() {
+function AdFilter({handleSearchChange, campSearch}) {
     return (
         <div>
-            <h1>Filter</h1>
+            <label>Search Campaign</label>
+            <input 
+                className='border'
+                placeholder='Enter Campaign Name'
+                value={campSearch}
+                onChange={handleSearchChange}
+            />
         </div>
     );
 }

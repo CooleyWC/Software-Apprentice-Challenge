@@ -37,6 +37,9 @@ function AdView() {
     const [adData, setAdData] = useState({})
     const [cardData, setCardData] = useState([])
 
+    const [campSearch, setCampSearch] = useState('')
+    
+
     useEffect(()=>{
         fetch(ADS_URL)
         .then(res=>res.json())
@@ -81,10 +84,18 @@ function AdView() {
         return formattedAd
     }
 
+    const handleSearchChange = (e) => {
+        setCampSearch(e.target.value)
+    }
+
+
     return (
         <div>
             <h1>AdView</h1>
-            <AdFilter />
+            <AdFilter 
+                campSearch={campSearch}
+                handleSearchChange={handleSearchChange}
+            />
             {cardData.map(ad=>(
                 <div 
                     key={ad.id}
@@ -101,7 +112,6 @@ function AdView() {
                             <p key={index}>{result}</p>
                         ))}
                     </div>
-                   
                 </div>
             ))}
         </div>
