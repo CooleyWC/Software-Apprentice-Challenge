@@ -38,6 +38,7 @@ function AdView() {
     const [cardData, setCardData] = useState([])
 
     const [campSearch, setCampSearch] = useState('')
+    const [sortSpend, setSortSpend] = useState(null)
     
 
     useEffect(()=>{
@@ -88,6 +89,16 @@ function AdView() {
         setCampSearch(e.target.value)
     }
 
+    const handleAsc = () =>{
+        console.log('asc')
+        setSortSpend('asc')
+    }
+
+    const handleDesc = () =>{
+        console.log('desc')
+        setSortSpend('desc')
+    }
+
     const filteredAds = cardData.filter((ad)=>{
         if(campSearch === ''){
             return true
@@ -102,6 +113,8 @@ function AdView() {
             <AdFilter 
                 campSearch={campSearch}
                 handleSearchChange={handleSearchChange}
+                handleAsc={handleAsc}
+                handleDesc={handleDesc}
             />
             {filteredAds.map(ad=>(
                 <div 
