@@ -47,7 +47,6 @@ function AdView() {
                 impressions: ad[keys.impressions],
                 clicks: ad[keys.clicks],
                 results: extractResults,
-                platform: platform
             }
         })
         return formattedAd
@@ -90,7 +89,7 @@ function AdView() {
 
     return (
         <div>
-            <h1>AdView</h1>
+            <h1 className='text-center text-2xl font-bold'>BLUE PRINT AD VIEW</h1>
             <AdFilter 
                 campSearch={campSearch}
                 handleSearchChange={handleSearchChange}
@@ -103,6 +102,7 @@ function AdView() {
                 <AdCard 
                     key={ad.id}
                     campaign={ad.campaign}
+                    platform={ad.platform}
                     adset={ad.adset}
                     creative={ad.creative}
                     spend={ad.spend}

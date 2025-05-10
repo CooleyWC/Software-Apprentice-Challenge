@@ -8,6 +8,7 @@ function AdCard({
     impressions,
     clicks,
     results,
+    platform
 }) {
     return (
         <div 
@@ -26,6 +27,7 @@ function AdCard({
                         <p key={index} className='pl-2'>{result}</p>
                     ))}
                 </div>
+                <p>Platform: {platform}</p>
             </div>
         </div>
     );
