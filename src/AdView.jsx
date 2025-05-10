@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import AdFilter from './AdFilter';
 
-
 const ADS_URL = "http://localhost:3000/fakeDataSet"
 
 const PLATFORM_KEY_MAP = {
@@ -73,6 +72,7 @@ function AdView() {
                 creative: ad[keys.creative],
                 spend: ad[keys.spend],
                 impressions: ad[keys.impressions],
+                clicks: ad[keys.clicks],
                 results: extractResults,
                 platform: platform
             }
@@ -135,6 +135,7 @@ function AdView() {
                     <h3>Creative: {ad.creative}</h3>
                     <p>Spend: {ad.spend}</p>
                     <p>Impressions: {ad.impressions}</p>
+                    <p>Clicks: {ad.clicks}</p>
                     <div>
                         <h5>Google Results:</h5>
                         {ad.results.map((result, index)=>(
