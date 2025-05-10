@@ -34,7 +34,7 @@ const PLATFORM_KEY_MAP = {
 
 function AdView() {
 
-    const [adData, setAdData] = useState({})
+    // const [adData, setAdData] = useState({})
     const [cardData, setCardData] = useState([])
 
     const [campSearch, setCampSearch] = useState('')
@@ -45,7 +45,7 @@ function AdView() {
         fetch(ADS_URL)
         .then(res=>res.json())
         .then(data=>{
-            setAdData(data)
+            // setAdData(data)
             const googleAnalytics = data["google_analytics"]
             const formattedFB = formatAds(data["facebook_ads"], "facebook_ads", googleAnalytics)
             const formattedTW = formatAds(data["twitter_ads"], "twitter_ads", googleAnalytics)
