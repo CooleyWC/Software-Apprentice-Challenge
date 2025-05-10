@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import AdFilter from './AdFilter';
 
+
 const ADS_URL = "http://localhost:3000/fakeDataSet"
 
 const PLATFORM_KEY_MAP = {
@@ -66,7 +67,7 @@ function AdView() {
             })
 
             return {
-                id: `${platform}-${Math.floor(Math.random() * 10000)}`,
+                id: `${platform}-${Date.now()}-${Math.floor(Math.random() * 10000)}`,
                 campaign: ad[keys.campaign],
                 adset: ad[keys.adset],
                 creative: ad[keys.creative],
@@ -112,6 +113,7 @@ function AdView() {
             return 0
         }
     })
+
 
     return (
         <div>
