@@ -106,6 +106,16 @@ function AdView() {
         return ad.campaign.toLowerCase().includes(campSearch.toLowerCase())
     })
 
+    const sortedSpend = filteredAds.sort((a, b)=>{
+        if(sortSpend === 'asc'){
+            return a.spend - b.spend
+        } else if(sortSpend === 'desc'){
+            return b.spend - a.spend
+        } else {
+            return 0
+        }
+    })
+
 
     return (
         <div>
@@ -116,7 +126,7 @@ function AdView() {
                 handleAsc={handleAsc}
                 handleDesc={handleDesc}
             />
-            {filteredAds.map(ad=>(
+            {sortedSpend.map(ad=>(
                 <div 
                     key={ad.id}
                     className='border border-solid '
