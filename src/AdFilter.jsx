@@ -1,6 +1,13 @@
 import React from 'react';
 
-function AdFilter({handleSearchChange, campSearch, handleAsc, handleDesc}) {
+function AdFilter({
+    handleSearchChange, 
+    campSearch, 
+    handleAsc, 
+    handleDesc,
+    handleClear
+
+}) {
     return (
         <div>
             <label>Search Campaign</label>
@@ -18,6 +25,12 @@ function AdFilter({handleSearchChange, campSearch, handleAsc, handleDesc}) {
                 className='border'
                 onClick={handleDesc}
             >Sort by Spend Descending</button>
+            <button 
+                className='border'
+                onClick={handleClear}
+                
+            
+            >Clear</button>
         </div>
     );
 }

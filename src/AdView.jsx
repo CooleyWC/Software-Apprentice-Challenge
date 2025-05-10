@@ -90,13 +90,16 @@ function AdView() {
     }
 
     const handleAsc = () =>{
-        console.log('asc')
         setSortSpend('asc')
     }
 
     const handleDesc = () =>{
-        console.log('desc')
         setSortSpend('desc')
+    }
+
+    const handleClear = () =>{
+        setCampSearch('')
+        setSortSpend(null)
     }
 
     const filteredAds = cardData.filter((ad)=>{
@@ -125,6 +128,7 @@ function AdView() {
                 handleSearchChange={handleSearchChange}
                 handleAsc={handleAsc}
                 handleDesc={handleDesc}
+                handleClear={handleClear}
             />
             {sortedSpend.map(ad=>(
                 <div 
