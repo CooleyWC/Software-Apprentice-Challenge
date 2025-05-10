@@ -1,37 +1,9 @@
 import {useEffect, useState} from 'react';
 import AdFilter from './AdFilter';
 import AdCard from './AdCard';
+import PLATFORM_KEY_MAP from './platformKeyMap';
 
 const ADS_URL = "http://localhost:3000/fakeDataSet"
-
-const PLATFORM_KEY_MAP = {
-    facebook_ads: {
-        campaign: "campaign_name",
-        adset: "media_buy_name",
-        creative: "ad_name",
-        spend: "spend",
-        impressions: "impressions",
-        clicks: "clicks"
-
-    },
-    twitter_ads: {
-        campaign: "campaign",
-        adset: "ad_group",
-        creative: "image_name",
-        spend: "spend",
-        impressions: "impressions",
-        clicks: "post_clicks"
-        
-    },
-    snapchat_ads: {
-        campaign: "campaign_name",
-        adset: "ad_squad_name",
-        creative: "creative_name",
-        spend: "cost",
-        impressions: "impressions",
-        clicks: "post_clicks"
-    },
-}
 
 function AdView() {
 
