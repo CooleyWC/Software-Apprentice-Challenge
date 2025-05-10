@@ -34,6 +34,7 @@ const PLATFORM_KEY_MAP = {
 function AdView() {
 
     const [adData, setAdData] = useState({})
+    const [cardData, setCardData] = useState([])
 
     useEffect(()=>{
         fetch(ADS_URL)
@@ -41,7 +42,11 @@ function AdView() {
         .then(data=>{
             setAdData(data)
             const googleAnalytics = data["google_analytics"]
-            formatAds(data["facebook_ads"], "facebook_ads", googleAnalytics)
+            const formattedFB = formatAds(data["facebook_ads"], "facebook_ads", googleAnalytics)
+            const formattedTW = formatAds(data["twitter_ads"], "twitter_ads", googleAnalytics)
+            const formattedSC = formatAds(data["snapchat_ads"], "snapchat_ads", googleAnalytics)
+            setCardData(prev=>prev.concat(formattedFB, formattedTW, formattedSC))
+           
         })
     }, [])
 
@@ -50,21 +55,27 @@ function AdView() {
         const ads = adData
         const keys = PLATFORM_KEY_MAP[platform]
         
-        const addGoogleResults = ads.map(ad=>{
+        const formattedAd = ads.map(ad=>{
             const matchingGoogleResults = googleAnalytics.filter(analitic=>
                 ad[keys.campaign].toLowerCase().includes(analitic.utm_campaign.toLowerCase().split(' ')[0]) &&
                 ad[keys.adset].toLowerCase().includes(analitic.utm_medium.toLowerCase().split(' ')[0]) &&
                 ad[keys.creative].toLowerCase().includes(analitic.utm_content.toLowerCase().split(' ')[0])
             ) 
             return {
-                ...ad,
-                matchingGoogleResults
+                id: `${platform}-${Math.floor(Math.random() * 10000)}`,
+                campaign: ad[keys.campaign],
+                adset: ad[keys.adset],
+                creative: ad[keys.creative],
+                spend: ad[keys.spend],
+                impressions: ad[keys.impressions],
+                results: matchingGoogleResults,
+                platform: platform
             }
         })
-        
-        console.log(addGoogleResults)
-
+        return formattedAd
     }
+
+    console.log(cardData)
 
     return (
         <div>
