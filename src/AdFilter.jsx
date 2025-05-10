@@ -9,7 +9,7 @@ function AdFilter({
 
 }) {
     return (
-        <div>
+        <div className='border solid p-6 mb-4'>
             <label>Search Campaign</label>
             <input 
                 className='border'
@@ -28,8 +28,6 @@ function AdFilter({
             <button 
                 className='border'
                 onClick={handleClear}
-                
-            
             >Clear</button>
         </div>
     );
