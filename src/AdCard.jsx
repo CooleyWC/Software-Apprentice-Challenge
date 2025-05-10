@@ -21,9 +21,9 @@ function AdCard({
                 <p>Impressions: {impressions}</p>
                 <p>Clicks: {clicks}</p>
                 <div>
-                    <h5>Google Results:</h5>
+                    <p>Google Results:</p>
                     {results.map((result, index)=>(
-                        <p key={index}>{result}</p>
+                        <p key={index} className='pl-2'>{result}</p>
                     ))}
                 </div>
             </div>
