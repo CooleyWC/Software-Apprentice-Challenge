@@ -6,7 +6,6 @@ const PLATFORM_KEY_MAP = {
         spend: "spend",
         impressions: "impressions",
         clicks: "clicks"
-
     },
     twitter_ads: {
         campaign: "campaign",
@@ -15,7 +14,6 @@ const PLATFORM_KEY_MAP = {
         spend: "spend",
         impressions: "impressions",
         clicks: "post_clicks"
-        
     },
     snapchat_ads: {
         campaign: "campaign_name",

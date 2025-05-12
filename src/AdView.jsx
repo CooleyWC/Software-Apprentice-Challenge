@@ -47,6 +47,7 @@ function AdView() {
                 impressions: ad[keys.impressions],
                 clicks: ad[keys.clicks],
                 results: extractResults,
+                platform: platform
             }
         })
         return formattedAd
